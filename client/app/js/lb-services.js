@@ -8489,6 +8489,43 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' &&
               url: urlBase + "/Members/change-stream",
               method: "POST",
             },
+
+            /**
+             * @ngdoc method
+             * @name lbServices.Member#acttivate
+             * @methodOf lbServices.Member
+             *
+             * @description
+             *
+             * Marks a member as activated.
+             *
+             * @param {Object=} parameters Request parameters.
+             *
+             *  - `id` – `{string}` -
+             *
+             * @param {Object} postData Request data.
+             *
+             * This method does not accept any data. Supply an empty object.
+             *
+             * @param {function(Object,Object)=} successCb
+             *   Success callback with two arguments: `value`, `responseHeaders`.
+             *
+             * @param {function(Object)=} errorCb Error callback with one argument:
+             *   `httpResponse`.
+             *
+             * @returns {Object} An empty reference that will be
+             *   populated with the actual data once the response is returned
+             *   from the server.
+             *
+             * <em>
+             * (The remote method definition does not provide any description.
+             * This usually means the response is a `Member` object.)
+             * </em>
+             */
+            "acttivate": {
+              url: urlBase + "/Members/:id/acttivate",
+              method: "PUT",
+            },
           }
         );
 

@@ -2,11 +2,11 @@
   "db": {
     "host": "localhost",
     "port": 27017,
-    "database": "admin",
-    "password": "",
+    "database": "dev",
+    "password": "12345678",
     "name": "db",
     "connector": "mongodb",
-    "user": " "
+    "user": "superuser"
   },
   "transient": {
     "name": "transient",
