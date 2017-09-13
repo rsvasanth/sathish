@@ -1,0 +1,31 @@
+{
+  "db": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "dev",
+    "password": "12345678",
+    "name": "db",
+    "connector": "mongodb",
+    "user": "superuser"
+  },
+  "transient": {
+    "name": "transient",
+    "connector": "memory"
+  },
+  "Email": {
+    "name": "Email",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "SMTP",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "auth": {
+          "user": "avnandinistore@gmail.com",
+          "pass": "rq6ve2dr"
+        }
+      }
+    ]
+  }
+}

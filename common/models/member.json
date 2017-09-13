@@ -1,0 +1,73 @@
+{
+  "name": "Member",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "created": {
+      "type": "date"
+    },
+    "fullname": {
+      "type": "string"
+    },
+    "partner": {
+      "type": "string"
+    },
+    "child1": {
+      "type": "string"
+    },
+    "child2": {
+      "type": "string"
+    },
+    "community": {
+      "type": "string"
+    },
+    "package": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "number"
+    },
+    "email": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "nationality": {
+      "type": "string"
+    },
+    "contribution": {
+      "type": "number"
+    },
+    "birthday": {
+      "type": "date"
+    },
+    "status": {
+      "type": "string"
+    },
+    "accountnumber": {
+      "type": "number",
+      "required": true
+    },
+    "account_active": {
+      "type": "boolean"
+    },
+    "photo_url": {
+      "type": "string"
+    },
+    "substop_start": {
+      "type": "date"
+    },
+    "substop_stop": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,245 @@
+<form name="form" ng-submit="submitForm()">
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <i data-toggle="collapse" class="btn btn-success" href="#70291516059420">
+      Activate Member Subsscription
+        </i>
+      </h4>
+    </div>
+    <div id="70291516059420" class="panel-collapse collapse">
+
+      <div class="panel-body">
+        <label class="switch">
+          <input type="checkbox" ng-model="member.account_active">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <i data-toggle="collapse" class="btn btn-danger" href="#70291516059421">
+        Hold This Member Temporarily
+        </i>
+      </h4>
+    </div>
+    <div id="70291516059421" class="panel-collapse collapse">
+
+      <div class="panel-body">
+    <label>Select Date range</label>  <input date-range-picker class="form-control date-picker" type="text" ng-model="subdate"  />
+          {{subdate.startDate}}-{{subdate.endDate}}<button ng-show="date" type="button" name="button">Hold</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="form-group" ng-class="{ 'has-sucess' : form.fullname.$sucess && !form.fullname.$touched }">
+      <label>Name</label>
+      <input type="text" name="fullname" class="form-control" ng-model="member.fullname" required>
+   <p ng-show="form.fullname.$invalid" class="help-block">You name is required.</p>
+  </div>
+    <div class="form-group " ng-class="{ 'has-error': form.package.$invalid }">
+     <label class="control-label " for="package">
+      Select member package
+     </label>
+     <select ng-model="member.package"class="select form-control"  name="package" required>
+      <option value="Single">
+       Single
+      </option>
+      <option value="Youth">
+       Youth
+      </option>
+      <option value="Couple">
+       Couple
+      </option>
+      <option value="Family">
+       Family
+      </option>
+      <option value="Family+">
+       Family+
+      </option>
+     </select>
+         <span ng-show="form.package.$error.required" class="label label-danger">Select package</span>
+    </div>
+    <div class="form-group " ng-show="showthisfield(member.package)">
+     <label class="control-label " for="partner">
+      Partner Name
+     </label>
+     <div class="input-group">
+      <div class="input-group-addon">
+       <i class="fa fa-user-plus">
+       </i>
+      </div>
+      <input ng-model="member.partner" class="form-control"  name="partner" placeholder="Enter Partner Name" type="text"/>
+     </div>
+    </div>
+    <div class="form-group " ng-show="showthisfieldchild(member.package)">
+     <label class="control-label " for="child1">
+      Child Name
+     </label>
+     <div class="input-group">
+      <div class="input-group-addon">
+       <i class="fa fa-child">
+       </i>
+      </div>
+      <input class="form-control" ng-model="member.child1" name="child1" placeholder="first child" type="text"/>
+     </div>
+    </div>
+    <div class="form-group " ng-show="showthisfieldchild2(member.package)">
+     <label class="control-label " for="child2">
+      Child Name
+     </label>
+     <div class="input-group">
+      <div class="input-group-addon">
+       <i class="fa fa-child">
+       </i>
+      </div>
+      <input ng-model="member.child2" class="form-control"  name="child2" placeholder="second child" type="text"/>
+     </div>
+    </div>
+    <div class="form-group ">
+     <label class="control-label " for="accountnumber">
+      Account Number
+     </label>
+     <div class="input-group" ng-class="{ 'has-error' : form.accountnumber.$invalid && !form.accountnumber.$pristine }">
+      <div class="input-group-addon">
+       <i class="fa fa-university">
+       </i>
+      </div>
+      <input ng-model="member.accountnumber" class="form-control"  name="accountnumber" placeholder="Account Number" type="text" ng-minlength="4" ng-maxlength="6" required/>
+     </div>
+    </div>
+    <div class="form-group " >
+     <label class="control-label " for="contribution">
+      Contribution
+     </label>
+     <div class="input-group">
+      <div class="input-group-addon">
+       <i class="fa fa-money">
+       </i>
+      </div>
+      <input ng-model="member.contribution" class="form-control" ng-init=""  name="contribution" placeholder="minimum 200" type="text" ng-minlength="3" ng-maxlength="4" required/>
+     </div>
+    </div>
+    <div class="form-group ">
+     <label class="control-label " for="community">
+      Community
+     </label>
+     <select  class="form-control" ng-model="member.community" name="community" required >
+
+         <option ng-repeat="com in community track by $index"  value="{{com.name}}">{{com.name}}</option>
+       </select>
+         <span ng-show="form.community.$error.required" class="label label-danger">Select service</span>
+    </div>
+    <div class="form-group ">
+     <label class="control-label " >
+      Status
+     </label>
+     <select  class="form-control" ng-model="member.status"  name="status" required>
+
+              <option value="Aurovillen" >Aurovillien</option>
+                   <option value="Newcomer">Newcomer</option>
+
+
+       </select>
+            <span ng-show="form.status.$error.required" class="label label-danger">Select Status</span>
+    </div>
+    <!-- <div class="form-group ">
+     <label class="control-label requiredField" for="email">
+      Email
+      <span class="asteriskField">
+       *
+      </span>
+     </label>
+     <div class="input-group">
+      <div class="input-group-addon">
+       <i class="fa ">
+       </i>
+      </div>
+      <input ng-model="member.email" class="form-control" id="email" name="email" type="text"/>
+     </div>
+    </div> -->
+    <div class="form-group ">
+     <label class="control-label " for="gender">
+  Gender
+     </label>
+     <select ng-model="member.gender" class="select form-control"  name="gender">
+      <option value="Male">
+      Male
+      </option>
+      <option value="Female">
+    Female
+      </option>
+
+     </select>
+    </div>
+    <div class="form-group ">
+     <label class="control-label " for="tel">
+      Telephone #
+     </label>
+     <div class="input-group">
+      <div class="input-group-addon">
+       <i class="fa fa-phone">
+       </i>
+      </div>
+      <input ng-model="member.phone"class="form-control" id="tel" name="tel" type="text"/>
+     </div>
+    </div>
+    <div class="form-group ">
+     <label class="control-label " for="tel">
+      Email #
+     </label>
+     <div class="input-group">
+      <div class="input-group-addon">
+       <i class="fa fa-email">
+       </i>
+      </div>
+      <input ng-model="member.email"class="form-control" id="tel" name="tel" type="text"/>
+     </div>
+    </div>
+    <div class="form-group ">
+     <label class="control-label " for="birthday">
+      Date of birth
+     </label>
+     <div class="input-group">
+      <div class="input-group-addon">
+       <i class="fa fa-birthday-cake">
+       </i>
+      </div>
+  <input class="form-control" type="text" ng-model="member.birthday" date-options="dateOptions" ui-date/>
+     </div>
+    </div>
+    <div class="form-group ">
+     <label class="control-label " for="nationality">
+      Nationality
+     </label>
+     <select  class="form-control" ng-model="member.nationality" name="nationality" required>
+
+         <option >Select Folder</option>
+         <option ng-repeat="nation in country track by $index"  value="{{nation.name}}">{{nation.name}}</option>
+       </select>
+            <span ng-show="form.nationality.$error.required" class="label label-danger">Select Nationality</span>
+    </div>
+    <div class="form-group ">
+     <label class="control-label " for="url">
+    Photo
+     </label>
+ <input type="file" photo-file="member.photo_url"  onchange="angular.element(this).scope().previewPhoto(event)"/>
+    </div>
+    <div class="">
+      <img ng-src="{{member.photo_url }}" ng-if="!photo" class="img-rounded"  width="150" height="150" style="margin-bottom:20px">
+  <img ng-src="{{photo }}"  ng-if="photo"class="img-rounded"  width="150" height="150" style="margin-bottom:20px">
+    </div>
+    <div class="form-group">
+     <div>
+      <button class="btn btn-primary " name="submit" type="submit">
+       Submit
+      </button>
+     </div>
+    </div>
+   </form>

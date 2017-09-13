@@ -1,0 +1,23 @@
+{
+  "name": "Family",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "partner": {
+      "type": "string"
+    },
+    "child1": {
+      "type": "string"
+    },
+    "child2": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

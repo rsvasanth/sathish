@@ -1,0 +1,92 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="ctrl.cancel()">&times;</button>
+
+  </div>
+  <div class="modal-body">
+    <p><img width="130px" height="130px" src="" ng-src="{{ctrl.member.photo_url}}"  class="center"alt="" ></p>
+    <table class="table">
+
+  <tbody>
+    <tr>
+      <th  class="col-md-10"scope="row">First Name</th>
+      <td class="col-md-2">{{ctrl.member.fullname}}</td>
+
+    </tr>
+    <tr ng-hide='!ctrl.member.partner'>
+      <th scope="row">Partner Name</th>
+      <td>{{ctrl.member.partner}}</td>
+
+    </tr>
+    <tr ng-hide='!ctrl.member.child1' >
+      <th scope="row">Child Name 1</th>
+      <td>{{ctrl.member.child1}}</td>
+
+    </tr>
+    <tr ng-hide='!ctrl.member.child2'>
+      <th scope="row">Child Name 2</th>
+      <td>{{ctrl.member.child2}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Account Number</th>
+      <td>{{ctrl.member.accountnumber}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Community</th>
+      <td>{{ctrl.member.community}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Contribution</th>
+      <td>{{ctrl.member.contribution}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Package</th>
+      <td>{{ctrl.member.package}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Date Joined</th>
+      <td>{{ctrl.member.created | date : 'dd/MM/yyyy'}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Mobile / Phone</th>
+      <td>{{ctrl.member.phone}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td>{{ctrl.member.email}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Date Of Birth</th>
+      <td>{{ctrl.member.birthday | date : 'dd/MM/yyyy'}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Gender</th>
+      <td>{{ctrl.member.gender}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Status</th>
+      <td>{{ctrl.member.status}}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Nationality</th>
+      <td>{{ctrl.member.nationality}}</td>
+
+    </tr>
+  </tbody>
+</table>
+  <a ui-sref="app.member.edit({memberId: ctrl.member.id})"><button type="button" class="btn-info"name="button">Edit Member</button></a>
+<button type="button" class="btn-success"name="button">View Statement</button>
+  </div>
+
+</div>

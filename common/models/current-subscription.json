@@ -1,0 +1,26 @@
+{
+  "name": "currentSubscription",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "email": {
+      "type": "string"
+    },
+    "account": {
+      "type": "number"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "memberId": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
