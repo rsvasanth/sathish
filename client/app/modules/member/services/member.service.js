@@ -5,6 +5,10 @@
     .service('MemberService', function ($state, CoreService, Member,Country,Package,Community, gettextCatalog) {
 
 
+
+            this.getCountryName = function (id) {
+              return Country.findById({id:id}).$promise;
+            };
       this.getCountry = function () {
         return Country.find({}).$promise;
       };
@@ -13,7 +17,7 @@
        };
 
       this.getCommunity = Community.find({}).$promise;
-      
+
          this.getMembers = function () {
               return Member.find({}).$promise;
             };

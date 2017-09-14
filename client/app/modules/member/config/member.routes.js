@@ -53,9 +53,16 @@
           templateUrl: 'modules/member/views/list.html',
           controllerAs: 'ctrl',
           cache: false, //required
-          controller: function (members) {
+          controller: function (members,MemberService) {
             console.log('members', members);
             this.members = members;
+            this.countName = function(id) {
+              MemberService.getCountryName(id).then(function(res) {
+console.log(res[0].name);
+                return res[0].name;
+
+              });
+            };
           },
           resolve: {
             members: function (MemberService) {

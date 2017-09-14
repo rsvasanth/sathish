@@ -1,10 +1,10 @@
 <form name="form" ng-submit="submitForm()">
-  <div class="form-group" ng-class="{ 'has-error' : form.fullname.$invalid && !form.fullname.$pristine }">
+  <div class="form-group" ng-class="{ 'has-sucess' : form.fullname.$sucess && !form.fullname.$touched }">
       <label>Name</label>
       <input type="text" name="fullname" class="form-control" ng-model="member.fullname" required>
-      <p ng-show="form.fullname.$invalid && !form.fullname.$pristine" class="help-block">You name is required.</p>
+
   </div>
-    <div class="form-group " ng-class="{ 'has-sucess' : form.package.$sucess && !form.package.$touched }">
+    <div class="form-group " ng-class="{ 'has-sucess' : form.package.$sucess && !form.fullname.$touched }">
      <label class="control-label " for="package">
       Select member package
      </label>
@@ -28,7 +28,7 @@
      </select>
 
     </div>
-    <div class="form-group " ng-show="showthisfield(member.package)">
+    <div class="form-group " ng-if="showthisfield(member.package)">
      <label class="control-label " for="partner">
       Partner Name
      </label>
@@ -37,10 +37,10 @@
        <i class="fa fa-user-plus">
        </i>
       </div>
-      <input ng-model="member.partner" class="form-control"  name="partner" placeholder="Enter Partner Name" type="text"/>
+      <input ng-model="member.partner" class="form-control"  name="partner" placeholder="Enter Partner Name"  required>
      </div>
     </div>
-    <div class="form-group " ng-show="showthisfieldchild(member.package)">
+    <div class="form-group " ng-if="showthisfieldchild(member.package)">
      <label class="control-label " for="child1">
       Child Name
      </label>
@@ -49,10 +49,10 @@
        <i class="fa fa-child">
        </i>
       </div>
-      <input class="form-control" ng-model="member.child1" name="child1" placeholder="first child" type="text"/>
+      <input class="form-control" ng-model="member.child1" name="child1" placeholder="first child" required>
      </div>
     </div>
-    <div class="form-group " ng-show="showthisfieldchild2(member.package)">
+    <div class="form-group " ng-if="showthisfieldchild2(member.package)">
      <label class="control-label " for="child2">
       Child Name
      </label>
@@ -61,7 +61,7 @@
        <i class="fa fa-child">
        </i>
       </div>
-      <input ng-model="member.child2" class="form-control"  name="child2" placeholder="second child" type="text"/>
+      <input ng-model="member.child2" class="form-control"  name="child2" placeholder="second child" required>
      </div>
     </div>
     <div class="form-group " ng-class="{ 'has-error' : form.accountnumber.$invalid && !form.accountnumber.$pristine }">
@@ -93,30 +93,33 @@
       <input ng-model="member.contribution" ng-if="member.package == 'Family+'"ng-init="member.contribution='1200'" class="form-control"  name="contribution" placeholder="minimum 200" type="text" ng-minlength="3" ng-maxlength="4" required/>
      </div>
     </div>
-    <div class="form-group ">
+    <div class="form-group " ng-class="{ 'has-sucess' : form.community.$sucess && !form.community.$touched }">
      <label class="control-label " for="community">
       Community
      </label>
-     <select  class="form-control" ng-model="member.community" name="community" required >
+     <select   ng-options="item as item.name for item in community track by item.id" ng-model="member.community"class="select form-control"  name="community" required>
+       <<option value="">Select Community here</option>
 
-         <option ng-repeat="com in community track by $index"  value="{{com.name}}">{{com.name}}</option>
-       </select>
-         <span ng-show="form.community.$error.required" class="label label-danger">Select service</span>
+     </select>
+
     </div>
-    <div class="form-group ">
-     <label class="control-label " >
+    <div class="form-group " ng-class="{ 'has-sucess' : form.status.$sucess && !form.status.$touched }">
+     <label class="control-label " for="status">
       Status
      </label>
-     <select  class="form-control" ng-model="member.status"  name="status" required>
+     <select ng-model="member.status"class="select form-control"  name="status" required>
+       <<option value="">Select status here</option>
+      <option value="Aurovillen">
+      Aurovillen
+      </option>
+      <option value="Newcomer">
+    Newcomer
+      </option>
 
-              <option value="Aurovillen" >Aurovillien</option>
-                   <option value="Newcomer">Newcomer</option>
+     </select>
 
-
-       </select>
-            <span ng-show="form.status.$error.required" class="label label-danger">Select Status</span>
     </div>
-    <!-- <div class="form-group ">
+    <div class="form-group ">
      <label class="control-label requiredField" for="email">
       Email
       <span class="asteriskField">
@@ -128,14 +131,14 @@
        <i class="fa ">
        </i>
       </div>
-      <input ng-model="member.email" class="form-control" id="email" name="email" type="text"/>
+      <input ng-model="member.email" class="form-control" id="email" name="email" type="text" required>
      </div>
-    </div> -->
+    </div>
     <div class="form-group ">
      <label class="control-label " for="gender">
   Gender
      </label>
-     <select ng-model="member.gender" class="select form-control"  name="gender">
+     <select ng-model="member.gender" class="select form-control"  name="gender" required>
       <option value="Male">
       Male
       </option>
@@ -154,7 +157,7 @@
        <i class="fa fa-phone">
        </i>
       </div>
-      <input ng-model="member.phone"class="form-control" id="tel" name="tel" type="text"/>
+      <input ng-model="member.phone"class="form-control" id="tel" name="tel" type="number" required>
      </div>
     </div>
     <div class="form-group ">
@@ -169,16 +172,15 @@
   <input class="form-control" type="text" ng-model="member.birthday" date-options="dateOptions" ui-date/>
      </div>
     </div>
-    <div class="form-group ">
+    <div class="form-group " ng-class="{ 'has-sucess' : form.community.$sucess && !form.nationality.$touched }">
      <label class="control-label " for="nationality">
-      Nationality
+      nationality
      </label>
-     <select  class="form-control" ng-model="member.nationality" name="nationality" required>
+     <select    ng-model="member.nationality"class=" form-control"  name="nationality" required>
+       <<option value="">Select nationality here</option>
+       <option ng-repeat="com in country track by $index" value="{{com.name}}">{{com.name}}</option>
+     </select>
 
-         <option >Select Folder</option>
-         <option ng-repeat="nation in country track by $index"  value="{{nation.name}}">{{nation.name}}</option>
-       </select>
-            <span ng-show="form.nationality.$error.required" class="label label-danger">Select Nationality</span>
     </div>
     <div class="form-group ">
      <label class="control-label " for="url">
