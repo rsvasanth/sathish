@@ -23,9 +23,12 @@
   </div>
   <div class="col-md-6">
 
-    <div  class="alert alert-info">
+    <div ng-show="member.substop_stop" class="alert alert-info">
       <strong>  Currentlly This Member been on hold !</strong> <br><br> <span class="label label-warning">From Date </span>
 :{{member.substop_start | date:'yyyy-MM-dd'}} </br></br><span class="label label-danger">To Date </span> :{{member.substop_stop | date:'yyyy-MM-dd'}}
+    </div>
+    <div  ng-show="!member.substop_start"class="alert alert-info">
+      <strong>  This member last updated  !</strong> <br><br> <span class="label label-warning"> On</span>
     </div>
   </div>
 </div>
