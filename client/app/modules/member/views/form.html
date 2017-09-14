@@ -3,27 +3,14 @@
   <div class="col-md-6">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <i data-toggle="collapse" class="btn btn-success" href="#70291516059420">
-      Activate Member Subsscription
-        </i>
-      </h4>
-    </div>
-    <div id="70291516059420" class="panel-collapse collapse">
-
-      <div class="panel-body">
-        <label class="switch">
-          <input type="checkbox" ng-model="member.account_active">
-          <span class="slider round"></span>
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <i data-toggle="collapse" class="btn btn-danger" href="#70291516059421">
+        <i ng-show="!member.substop_stop" data-toggle="collapse" class="btn btn-danger" href="#70291516059421">
         Hold This Member Temporarily
         </i>
+        <i ng-show="member.substop_stop" data-toggle="collapse" class="btn btn-danger" href="#70291516059421">
+    Adjust date for this member !
+        </i>
+
+
       </h4>
     </div>
     <div id="70291516059421" class="panel-collapse collapse">
@@ -32,6 +19,13 @@
     <label>Select Date range</label>  <input date-range-picker class="form-control date-picker" type="text" ng-model="subdate"  />
           {{subdate.startDate}}-{{subdate.endDate}}<button ng-show="date" type="button" name="button">Hold</button>
       </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+
+    <div  class="alert alert-info">
+      <strong>  Currentlly This Member been on hold !</strong> <br><br> <span class="label label-warning">From Date </span>
+:{{member.substop_start | date:'yyyy-MM-dd'}} </br></br><span class="label label-danger">To Date </span> :{{member.substop_stop | date:'yyyy-MM-dd'}}
     </div>
   </div>
 </div>
@@ -225,6 +219,22 @@
        </select>
             <span ng-show="form.nationality.$error.required" class="label label-danger">Select Nationality</span>
     </div>
+    <div >
+
+      <label class="control-label " >
+
+              Activate  / Deactivate Member
+      </label>
+    </div>
+    <div >
+
+        <label class="switch">
+          <input type="checkbox" ng-model="member.account_active">
+          <span class="slider round"></span>
+        </label>
+
+    </div>
+
     <div class="form-group ">
      <label class="control-label " for="url">
     Photo

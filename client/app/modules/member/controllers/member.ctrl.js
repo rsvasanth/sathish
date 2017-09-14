@@ -39,19 +39,19 @@ reader.readAsDataURL(file);
       $scope.isDisabled = false;
      $scope.showthisfield = function(id){
     if(id === 'Couple' || id ==='Family' || id ==='Family+'){
-      console.log('check ok');
+
       return true
     };
      };
      $scope.showthisfieldchild = function(id){
     if( id ==='Family' || id ==='Family+'){
-      console.log('check ok');
+
       return true
     };
      };
      $scope.showthisfieldchild2 = function(id){
     if(  id ==='Family+'){
-      console.log('check ok');
+
       return true
     };
      };
@@ -89,7 +89,7 @@ reader.readAsDataURL(file);
 
 
   }).controller('memberEditCtrl',function(
-    $scope, FileUploader,  $state,  $q, $stateParams,Member,Country,Community,CoreService,$rootScope, MemberService){
+    $scope, FileUploader,  $state,  $q, $stateParams,Member,Country,Community,CoreService,$rootScope, MemberService,ApiService){
 
       $scope.country = [];
       $scope.community = [];
@@ -127,19 +127,19 @@ $scope.editm = "test edit m";
 $scope.member = {};
 $scope.showthisfield = function(id){
 if(id === 'Couple' || id ==='Family' || id ==='Family+'){
- console.log('check ok');
+
  return true
 };
 };
 $scope.showthisfieldchild = function(id){
 if( id ==='Family' || id ==='Family+'){
- console.log('check ok');
+
  return true
 };
 };
 $scope.showthisfieldchild2 = function(id){
 if(  id ==='Family+'){
- console.log('check ok');
+
  return true
 };
 };
@@ -158,13 +158,30 @@ console.log(  $scope.member.community);
   });
 
 $scope.submitForm = function(){
+
   $scope.member.photo_url = $scope.photo;
   $scope.member.substop_start = $scope.subdate.startDate;
     $scope.member.substop_stop = $scope.subdate.endDate;
   $scope.member
     .$save()
     .then(function(member) {
-      $state.go('^.list');
+     if($scope.member.substop_stop){
+ApiService.deactmember($scope.member.id).then(function () {
+      console.log('ApiService.deactmember success');
+
+    })
+    .catch(function (err) {
+      console.log('ApiService.checkConnection err: ' + err);
+
+    });
+     }
+
+      $state.go('^.list', $stateParams, {
+          reload: true,
+          inherit: false,
+          notify: true
+      });
+
     });
 };
 

@@ -50,11 +50,11 @@
     <tr>
       <th scope="row">     <a href="#">
           <i  ng-show="m.account_active == true" class="fa fa-circle" aria-hidden="true" style="color:green"></i>
-          <i ng-hide="m.account_active == true"class="fa fa-circle" style="color:pink"></i>
+          <i ng-show="m.account_active == false"class="fa fa-circle" style="color:pink"></i>
         </a></th>
       <td>{{m.created | date : 'dd/MM/yyyy'}}</td>
       <td>{{m.fullname}}</td>
-  
+
       <td>{{m.accountnumber}}</td>
       <td>{{m.community}}</td>
       <td>{{m.contribution}}</td>

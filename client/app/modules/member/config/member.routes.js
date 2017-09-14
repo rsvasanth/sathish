@@ -52,6 +52,7 @@
           url: '',
           templateUrl: 'modules/member/views/list.html',
           controllerAs: 'ctrl',
+          cache: false, //required
           controller: function (members) {
             console.log('members', members);
             this.members = members;
