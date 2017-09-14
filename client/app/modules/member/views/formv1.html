@@ -1,14 +1,15 @@
 <form name="form" ng-submit="submitForm()">
-  <div class="form-group" ng-class="{ 'has-sucess' : form.fullname.$sucess && !form.fullname.$touched }">
+  <div class="form-group" ng-class="{ 'has-error' : form.fullname.$invalid && !form.fullname.$pristine }">
       <label>Name</label>
       <input type="text" name="fullname" class="form-control" ng-model="member.fullname" required>
-   <p ng-show="form.fullname.$invalid && !form.fullname.$touched" class="help-block">You name is required.</p>
+      <p ng-show="form.fullname.$invalid && !form.fullname.$pristine" class="help-block">You name is required.</p>
   </div>
-    <div class="form-group " ng-class="{ 'has-error': userForm.package.$invalid }">
+    <div class="form-group " ng-class="{ 'has-sucess' : form.package.$sucess && !form.package.$touched }">
      <label class="control-label " for="package">
       Select member package
      </label>
      <select ng-model="member.package"class="select form-control"  name="package" required>
+       <<option value="">Select package here</option>
       <option value="Single">
        Single
       </option>
@@ -25,7 +26,7 @@
        Family+
       </option>
      </select>
-         <span ng-show="form.package.$error.required" class="label label-danger">Select package</span>
+
     </div>
     <div class="form-group " ng-show="showthisfield(member.package)">
      <label class="control-label " for="partner">
