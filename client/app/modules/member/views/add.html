@@ -97,9 +97,9 @@
      <label class="control-label " for="community">
       Community
      </label>
-     <select   ng-options="item as item.name for item in community track by item.id" ng-model="member.community"class="select form-control"  name="community" required>
-       <<option value="">Select Community here</option>
-
+     <select  ng-model="member.community"class="select form-control"  name="community" required>
+       <option  value="">Select Community here</option>
+       <option ng-repeat="com in community track by $index" value="{{com.name}}">{{com.name}}</option>
      </select>
 
     </div>
@@ -177,7 +177,7 @@
       nationality
      </label>
      <select    ng-model="member.nationality"class=" form-control"  name="nationality" required>
-       <<option value="">Select nationality here</option>
+       <option value="">Select nationality here</option>
        <option ng-repeat="com in country track by $index" value="{{com.name}}">{{com.name}}</option>
      </select>
 

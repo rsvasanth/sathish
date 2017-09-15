@@ -73,13 +73,13 @@ console.log(res[0].name);
         })
         .state('app.member.add', {
           url: '/add',
-          templateUrl: 'modules/member/views/formv1.html',
+          templateUrl: 'modules/member/views/add.html',
           controller:'memberAddCtrl'
 
         })
         .state('app.member.edit', {
           url: '/edit/:memberId',
-          templateUrl: 'modules/member/views/form.html',
+          templateUrl: 'modules/member/views/edit.html',
 
           controller:'memberEditCtrl'
         })
