@@ -132,7 +132,7 @@
      </label>
      <select  class="form-control" ng-model="member.community" name="community" required >
 
-         <option ng-repeat="com in community track by $index"  value="{{com.name}}">{{com.name}}</option>
+         <option ng-repeat="com in community "  value="{{com.name}}">{{com.name}}</option>
        </select>
          <span ng-show="form.community.$error.required" class="label label-danger">Select service</span>
     </div>
@@ -221,7 +221,7 @@
      <select  class="form-control" ng-model="member.nationality" name="nationality" required>
 
          <option >Select Folder</option>
-         <option ng-repeat="nation in country track by $index"  value="{{nation.name}}">{{nation.name}}</option>
+         <option ng-repeat="nation in country "  value="{{nation.name}}">{{nation.name}}</option>
        </select>
             <span ng-show="form.nationality.$error.required" class="label label-danger">Select Nationality</span>
     </div>
